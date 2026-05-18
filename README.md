@@ -2,7 +2,7 @@
 
 Public bug-report form built with Next.js. Visitors submit bug reports against the Group 2 backend — no login required.
 
-**Live app:** `TODO_ADD_DEPLOYED_FE_URL`
+**Live app:** https://bug-tracker-g2.vercel.app
 **Backend API:** https://group-2-9289.onrender.com
 **API docs:** https://group-2-9289.onrender.com/api-docs
 

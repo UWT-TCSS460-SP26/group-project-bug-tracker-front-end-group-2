@@ -56,13 +56,14 @@
 
 | Person | Task | Status |
 |---|---|---|
-| Rudik | Stage merged build into `sprint5-group-fe/`, write README, patch `api.ts`, deploy to Vercel/Render | In progress |
+| Rudik | Stage merged build into `sprint5-group-fe/`, write README, patch `api.ts` | Done |
+| Rudik | Deploy to Vercel — live at https://bug-tracker-g2.vercel.app | Done |
 | Collins | Commit `workflows/collins.md` to team repo | Pending |
 | Jonathan | Commit `workflows/jonathan.md` to team repo | Pending |
 | Mani | Commit `workflows/mani.md` to team repo (expand writeup if time allows) | Pending |
-| BE owner | Add deployed FE origin to `CORS_ALLOWED_ORIGINS`, redeploy BE | Pending (after deploy) |
-| All | End-to-end smoke test from deployed FE to deployed BE | Pending (after deploy) |
-| Rudik | Add deployed FE URL to partner-facing BE README, send to downstream partner | Pending (after deploy) |
+| BE owner | Add `https://bug-tracker-g2.vercel.app` to `CORS_ALLOWED_ORIGINS`, redeploy BE | Pending |
+| All | End-to-end smoke test from deployed FE to deployed BE | Pending |
+| Rudik | Add deployed FE URL to partner-facing BE README, send to downstream partner | Pending |
 
 ## Risks / Blockers
 
