@@ -121,7 +121,7 @@ The form calls `POST /v1/issues` on the backend. No authentication is required.
 - **Validation error (400)** — inline field errors mapped from the API's `error` field, banner above the form, focus moves to the first invalid field.
 - **Network/server failure** — friendly retry-safe message, typed content preserved so the user can retry.
 
-See [`sprint-5.md`](sprint-5.md) and [`openapi.yaml`](openapi.yaml) for the full spec this app was built against.
+See the [API docs](https://group-2-9289.onrender.com/api-docs) for the full backend contract.
 
 ---
 
@@ -140,9 +140,7 @@ This app is designed to deploy on **Vercel** or **Render**.
 ## Sprint 5 Deliverable Docs
 
 - [`workflows/`](workflows/) — each team member's individual AI workflow writeup.
-- [`docs/meeting-minutes-sprint5.md`](docs/meeting-minutes-sprint5.md) — build comparison and selection/merge decision.
-- [`docs/merge-decision.md`](docs/merge-decision.md) — final build selection rationale.
-- [`docs/release-checklist.md`](docs/release-checklist.md) — deployment and handoff checklist.
+- [`MEETING-MINUTES.md`](MEETING-MINUTES.md) — meeting record including build comparison, pick/merge decision, and feature merge matrix.
 
 ### Adding your workflow writeup (team members)
 

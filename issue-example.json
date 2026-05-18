@@ -1,6 +1,0 @@
-{
-  "title": "Ratings page shows spinner forever",
-  "description": "When trying to rate a movie, the page keeps spinning and never completes.",
-  "reproductionSteps": "1. Open app.\n2. Search for a movie.\n3. Click Rate and submit.",
-  "reporterContact": "partner-dev@example.com"
-}

@@ -52,6 +52,21 @@
 - **Cut from the merge:** Mani's distinctive serif aesthetic (off-brand for an engineering bug-report form). Jonathan's hardcoded fallback URL (violates spec).
 - **Why this decision:** Rudik's build had the largest lead on the criteria that are expensive to fix after the fact — component architecture (extending into Sprint 6's auth + triage UI), accessibility (focus management is rarely added back later), and validation depth (`FIELD_LIMITS`/character counters). The smaller polish wins from Collins (README) and Jonathan (matcher) port in cleanly without disturbing the base.
 
+### Feature Merge Matrix
+
+| Feature | Source Member | Included? | Notes |
+|---|---|---|---|
+| Form layout (single page, 4 fields) | Rudik | Yes | Reusable `<Field>` component for input + textarea |
+| Validation handling | Rudik | Yes | Dedicated `validation.ts` with `FIELD_LIMITS` + live character counter |
+| Network error handling | Rudik | Yes | API throws `NETWORK_FAILURE`; form preserves input and shows retry-safe banner |
+| Success confirmation UX | Rudik | Yes | Full-replace card with issue id + status + "File another report" CTA |
+| Accessibility touches | Rudik | Yes | `aria-invalid`/`aria-required`/`aria-describedby`, `role="alert"`, banner-focus + first-invalid-field focus, `prefers-reduced-motion` |
+| API field-error matcher | Jonathan | Yes (ported) | `normalizeFieldReference` approach in `lib/api.ts` — more robust than substring matching |
+| Partner-facing README | Collins | Yes (adapted) | Live URLs at top, tech-stack table, CORS reminder in deployment section |
+| `.gitignore` | Collins | Yes | Excludes `.claude/`, `.vercel`, tracks `.env.example` explicitly |
+| Distinctive serif aesthetic | Mani | No | Off-brand for an engineering bug-report form |
+| Hardcoded `DEFAULT_API_BASE_URL` fallback | Jonathan | No | Violates "no hardcoded URLs in component code" |
+
 ## Task Assignments
 
 | Person | Task | Status |
