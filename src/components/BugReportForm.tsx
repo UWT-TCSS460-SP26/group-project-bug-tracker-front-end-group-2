@@ -29,6 +29,7 @@ export function BugReportForm({ apiBaseUrl }: Props) {
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [banner, setBanner] = useState<BannerState>({ kind: "idle" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSlowMessage, setShowSlowMessage] = useState(false);
   const [confirmation, setConfirmation] = useState<ConfirmationState | null>(null);
 
   const bannerRef = useRef<HTMLDivElement>(null);
@@ -36,6 +37,7 @@ export function BugReportForm({ apiBaseUrl }: Props) {
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
   const reproductionRef = useRef<HTMLTextAreaElement>(null);
   const contactRef = useRef<HTMLInputElement>(null);
+  const slowMessageTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (banner.kind !== "idle") {
@@ -105,8 +107,13 @@ export function BugReportForm({ apiBaseUrl }: Props) {
     }
 
     setIsSubmitting(true);
+    setShowSlowMessage(false);
     setFieldErrors({});
     setBanner({ kind: "idle" });
+
+    slowMessageTimerRef.current = setTimeout(() => {
+      setShowSlowMessage(true);
+    }, 4000);
 
     try {
       const result = await submitIssue(endpoint, values);
@@ -137,6 +144,11 @@ export function BugReportForm({ apiBaseUrl }: Props) {
           "Could not reach the API. Check your connection and retry — your input is saved.",
       });
     } finally {
+      if (slowMessageTimerRef.current) {
+        clearTimeout(slowMessageTimerRef.current);
+        slowMessageTimerRef.current = null;
+      }
+      setShowSlowMessage(false);
       setIsSubmitting(false);
     }
   }
@@ -178,6 +190,20 @@ export function BugReportForm({ apiBaseUrl }: Props) {
     <>
       {banner.kind !== "idle" && (
         <StatusBanner ref={bannerRef} kind={banner.kind} message={banner.message} />
+      )}
+
+      {isSubmitting && (
+        <div className="submitting-status" role="status" aria-live="polite">
+          <span className="submitting-spinner" aria-hidden="true" />
+          <div className="submitting-status__text">
+            <p className="submitting-status__title">Submitting your report…</p>
+            <p className="submitting-status__hint">
+              {showSlowMessage
+                ? "Our server may be waking up — this can take up to a minute. Please don't refresh the page."
+                : "Sending your report to the server. Please wait a moment."}
+            </p>
+          </div>
+        </div>
       )}
 
       <form className="form" noValidate onSubmit={handleSubmit}>

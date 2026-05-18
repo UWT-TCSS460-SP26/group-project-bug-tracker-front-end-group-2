@@ -333,6 +333,9 @@ textarea[aria-invalid="true"]:focus {
 }
 
 @keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
   to {
     transform: rotate(360deg);
   }
@@ -463,10 +466,59 @@ textarea[aria-invalid="true"]:focus {
   }
 }
 
+.submitting-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid var(--accent-border);
+  background: var(--accent-soft);
+  border-radius: var(--radius-control);
+  color: var(--accent-hover);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  animation: banner-in 180ms ease;
+}
+
+.submitting-status__text {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.submitting-status__title {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.submitting-status__hint {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.submitting-spinner {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(19, 78, 74, 0.18);
+  border-top-color: var(--accent);
+  border-right-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-top: 0.12rem;
+  flex-shrink: 0;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .status-banner,
   .confirmation,
+  .submitting-status,
   .spinner {
     animation: none;
+  }
+
+  .submitting-spinner {
+    animation-duration: 1.5s;
   }
 }
