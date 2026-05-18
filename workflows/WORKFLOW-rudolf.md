@@ -1,4 +1,4 @@
-# Sprint 5 Individual Workflow Writeup - Rudik
+# Sprint 5 Individual Workflow Writeup - Rudolf
 
 ## 1) First Prompt
 
